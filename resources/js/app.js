@@ -113,7 +113,7 @@ function addCards(cardsArr) {
 
 function changeSide(el, front, id) {
     
-    sound = new Audio("resources/mp3/flip.wav");
+    sound = new Audio("resources/wav/flip.wav");
     sound.play();
     
     var index;
@@ -149,7 +149,7 @@ function changeSide(el, front, id) {
         window.setTimeout(function() {
             add30sec();
             
-            sound = new Audio("resources/mp3/bonus.wav");
+            sound = new Audio("resources/wav/bonus.wav");
             sound.play();
             
             removeClass('card-' + cards[id].id, 'flipInY'); 
@@ -191,7 +191,7 @@ function checkPairs() {
                 cards[activeCards[0].id].active = '0';
                 cards[activeCards[1].id].active = '0';
                 
-                sound = new Audio("resources/mp3/pair.wav");
+                sound = new Audio("resources/wav/pair.wav");
                 sound.play();
 
                 leftCards = leftCards - 2;
@@ -219,7 +219,7 @@ function checkPairs() {
                     
         window.setTimeout(function() {
 
-            sound = new Audio("resources/mp3/no-pair.wav");
+            sound = new Audio("resources/wav/no-pair.wav");
             sound.play();
             
             document.getElementById('card-' + activeCards[0].id).src = "resources/img/card-back.jpeg";        
