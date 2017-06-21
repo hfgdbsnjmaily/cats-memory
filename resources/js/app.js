@@ -1,4 +1,4 @@
-var document, window;
+var document, window, Audio;
 
 var Card = function(id, front, back, active) {
     this.id = id;
@@ -24,6 +24,7 @@ var maxNumberOfActives = 2;
 var points;
 var time;
 var timeLeft;
+var score;
 var highscore = 0;
 
 var sound;
@@ -47,6 +48,7 @@ function startGame() {
     document.querySelector('.points').textContent = points;
     document.querySelector('.time').textContent = time;
     document.querySelector('.end-box').style.display = 'none'; 
+    document.getElementById('back-img').style.display = 'none'; 
     document.querySelector('.highscore').textContent = highscore;
     document.querySelector('.new-highscore').style.display = 'none';
     
@@ -178,6 +180,8 @@ function changeSide(el, front, id) {
             setPointerEvents('body', 'auto');
             document.querySelector('.bonus-time').style.display = 'none';
             
+            checkEnd();
+            
         }, 1000);
     }
 }
@@ -283,9 +287,14 @@ function endGame() {
         timeLeft = document.getElementById('time').textContent;
         var a = timeLeft.split(':'); 
         var seconds = (+a[0]) * 60 + (+a[1]); 
-        var score = points + seconds;
-        document.querySelector('.end-score').textContent = score;
+        score = points + seconds;
+        endTime = seconds;
+
+        countdownPoints();
+        countupPoints();
+
         document.querySelector('.try-again').style.display = 'none';
+
         
         if (score > highscore) {
             highscore = score;
@@ -382,5 +391,29 @@ function removeCards() {
     var el = document.getElementById("cards").innerHTML; 
     var replace = el.replace(el, "");
     document.getElementById("cards").innerHTML = replace;
+}
+
+function countdownPoints() {
+    endTime--;
+
+    document.getElementById("time").innerHTML = '0:' + endTime; 
+
+    if (endTime === 0) {
+         return;
+    }
+    
+    setTimeout(countdownPoints, 50);
+}
+
+function countupPoints() {
+    points++;
+
+    document.querySelector('.end-score').innerHTML = points; 
+
+    if (points >= score) {
+         return;
+    }
+    
+    setTimeout(countupPoints, 50);
 }
 
