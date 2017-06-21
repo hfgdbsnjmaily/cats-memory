@@ -10,7 +10,7 @@ var Card = function(id, front, back, active) {
 var numbersOfCards = 14; 
 var numbersOfSpecial = 1;
 var numbersOfTotal = numbersOfCards + numbersOfSpecial;
-var leftCards = numbersOfCards + numbersOfSpecial;
+var leftCards;
 
 var cards = [];
 var activeCards = [];
@@ -24,13 +24,20 @@ var maxNumberOfActives = 2;
 var points;
 var time;
 var timeLeft;
+var highscore = 0;
 
 var sound;
+
+var isPlaying = 0;
 
 setPointerEvents('body', 'none');
 setPointerEvents('.new-game', 'auto');
 
 function startGame() {
+    
+    if (isPlaying === 1) {
+        removeCards();
+    }
     
     removeClass('start', 'bounce');
     removeClass('start', 'infinite');    
@@ -40,6 +47,8 @@ function startGame() {
     document.querySelector('.points').textContent = points;
     document.querySelector('.time').textContent = time;
     document.querySelector('.end-box').style.display = 'none'; 
+    document.querySelector('.highscore').textContent = highscore;
+    document.querySelector('.new-highscore').style.display = 'none';
     
     setPointerEvents('body', 'auto');
     
@@ -53,6 +62,9 @@ function newGame() {
     randomCardsId(randomId);
     fillCardsArr(cards);
     addCards(cards);
+    
+    leftCards = numbersOfCards + numbersOfSpecial;
+    isPlaying = 1;
 }
 
 function randomCardsId (arr) {
@@ -144,7 +156,7 @@ function changeSide(el, front, id) {
     if (front == 'card-7') {
         
         setPointerEvents('body', 'none');
-        document.querySelector('.bonus-time').style.display = 'inline-block';
+        document.querySelector('.bonus-time').style.display = 'block';
 
         window.setTimeout(function() {
             add30sec();
@@ -263,25 +275,29 @@ function endGame() {
     
     window.clearInterval(iv);
     document.querySelector('.end-box').style.display = 'inline-block';
-    
-    cards = [];
-    activeCards = [];
-    randomId = [];
+
+    removeCards();
     
     if (leftCards === 0) {
 
         timeLeft = document.getElementById('time').textContent;
         var a = timeLeft.split(':'); 
         var seconds = (+a[0]) * 60 + (+a[1]); 
-        document.querySelector('.end-score').textContent = points + seconds;
+        var score = points + seconds;
+        document.querySelector('.end-score').textContent = score;
         document.querySelector('.try-again').style.display = 'none';
+        
+        if (score > highscore) {
+            highscore = score;
+            document.querySelector('.new-highscore').style.display = 'inline-block';
+            document.querySelector('.highscore').textContent = highscore;
+        }
         
     } else {
         
         document.querySelector('.end-text').innerHTML = 'Time\'s up!';
-        document.querySelector('.end-text').style.backgroundColor = '#ebebeb';
-        document.querySelector('.end-text').style.borderRadius = '10px';
-        document.querySelector('.end-text').style.boxShadow = '6px 6px 30px 0px rgba(184,184,184,1)';
+        document.querySelector('.try-again').style.display = 'inline-block';
+
     }
 }
 
@@ -349,11 +365,22 @@ function countdown(elementName, minutes, seconds) {
 }
 
 function tryAgain() {
-    
-    window.setTimeout(function() {
-        location.reload();
-    }, 500); 
+
+    document.querySelector('.end-box').style.display = 'none';
+        
+    startGame();
 }
 
-
+function removeCards() {
+        
+    cards = [];
+    activeCards = [];
+    randomId = [];
+    photoNumber = -1;
+    isPlaying = 0;
+    
+    var el = document.getElementById("cards").innerHTML; 
+    var replace = el.replace(el, "");
+    document.getElementById("cards").innerHTML = replace;
+}
 

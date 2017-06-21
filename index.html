@@ -27,6 +27,11 @@
                     <div class="time" id="time">2:58</div>
                     <div class="bonus-time animated tada">+ 30 sec</div>
                 </div>
+                <div class="highscore-box">
+                    <div class="new-highscore animated infinite tada">New highscore!</div>
+                    <div>Your highscore<div class="highscore">150</div></div>
+
+                </div>
             </div>
             
             <div class="game-panel" id="game-panel">
@@ -38,7 +43,7 @@
             <div class="end-box">
                 <div class="close-end-box" onclick="closeEndBox()">x</div>
                 <div class="end-text">You win with<div class="end-score">120</div> points!</div>
-                <button class="btn try-again" onclick="tryAgain()"> Try again! </button>
+                <button class="btn try-again animated infinite bounce" onclick="tryAgain()" onmouseout="addClass('try-again', 'bounce')" onmouseover="removeClass('try-again', 'bounce')" id="try-again"> Try again! </button>
             </div>  
         </div>
         

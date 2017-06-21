@@ -51,21 +51,41 @@ header {
     padding: 5px;
     border-radius: 8px;
     text-transform: uppercase;
+    cursor: pointer;
+}
+
+#start {
+    margin-top: -18%;
+    z-index: 2;
 }
 
 .score-box,
-.time-box {
-    padding: 10%;
+.time-box,
+.highscore-box{
+    padding: 9%;
     font-size: 200%;
+    position: relative;
 }
 
 .points,
-.time {
+.time,
+.highscore {
     font-size: 250%;
 }
 
 .bonus-time {
     color: #65bf65;
+    position: absolute;
+    margin-left: 40%;
+    display: none;
+}
+
+.new-highscore {
+    color: #eab144;
+    font-size: 110%;
+    font-weight: 600;
+    position: absolute;
+    margin-top: -23%;
     display: none;
 }
 
