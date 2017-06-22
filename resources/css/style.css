@@ -1,10 +1,9 @@
 * {
     margin: 0;
-    padding: 0;
-    
+    padding: 0; 
 }
 
-.clearfix {zoom: 1}
+.clearfix { zoom: 1 }
 
 .clearfix:after {
     content: '.';
@@ -27,7 +26,6 @@ body {
 }
 
 header {
-    /*background-color: rgba(16, 39, 216, 0.36);*/
     text-align: center;
     margin: 1% auto;
     width: 70%;
@@ -69,9 +67,7 @@ header {
 
 .points,
 .time,
-.highscore {
-    font-size: 250%;
-}
+.highscore { font-size: 250%; }
 
 .bonus-time {
     color: #65bf65;
@@ -89,14 +85,11 @@ header {
     display: none;
 }
 
-.game {
-    position: relative;
-}
+.game { position: relative; }
 
 .game-panel{
     width: 70%;
     float: right;
-    /*background-color: rgba(255, 0, 0, 0.36);*/
     height: 100vh;
 }
 
@@ -148,9 +141,7 @@ header {
     font-size: 200%;
 }
 
-.end-score {
-    font-size: 250%;
-}
+.end-score { font-size: 250%; }
 
 .close-end-box {
     float: right;
@@ -162,8 +153,7 @@ header {
 
 .try-again {
     margin-top: -150px;
-    margin-left: calc(225px - 93.5px);
-    
+    margin-left: calc(225px - 93.5px); 
 }
 
 

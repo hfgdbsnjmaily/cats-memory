@@ -10,6 +10,7 @@ var Card = function(id, front, back, active) {
 var numbersOfCards = 14; 
 var numbersOfSpecial = 1;
 var numbersOfTotal = numbersOfCards + numbersOfSpecial;
+
 var leftCards;
 
 var cards = [];
@@ -24,6 +25,7 @@ var maxNumberOfActives = 2;
 var points;
 var time;
 var timeLeft;
+
 var score;
 var highscore = 0;
 
@@ -47,9 +49,10 @@ function startGame() {
     
     document.querySelector('.points').textContent = points;
     document.querySelector('.time').textContent = time;
+    document.querySelector('.highscore').textContent = highscore;
+    
     document.querySelector('.end-box').style.display = 'none'; 
     document.getElementById('back-img').style.display = 'none'; 
-    document.querySelector('.highscore').textContent = highscore;
     document.querySelector('.new-highscore').style.display = 'none';
     
     setPointerEvents('body', 'auto');
@@ -66,10 +69,11 @@ function newGame() {
     addCards(cards);
     
     leftCards = numbersOfCards + numbersOfSpecial;
+    
     isPlaying = 1;
 }
 
-function randomCardsId (arr) {
+function randomCardsId(arr) {
     
     for (var i = 0; i < numbersOfTotal; i++) {
 
@@ -107,13 +111,16 @@ function fillCardsArr(arr) {
     }
 }
 
-
 function addCards(cardsArr) {
+    
     var html, newHtml, el;
+    
     console.log(cards);
 
     for (var i = 0; i < cardsArr.length; i++) {
+        
         el = '.cards';
+        
         var front = cardsArr[i].front;
         var id = cardsArr[i].id;
             
@@ -137,6 +144,7 @@ function changeSide(el, front, id) {
     if (cards[id].active === '0' && activeCards.length < maxNumberOfActives) {
 
         el.src = "resources/img/"+front+".jpeg";
+        
         cards[id].active = '1';
 
         activeCards.push(cards[id]);
@@ -149,6 +157,7 @@ function changeSide(el, front, id) {
     } else if (cards[id].active === '1') {
 
         el.src = "resources/img/card-back.jpeg";
+        
         cards[id].active = '0';
             
         index = activeCards.indexOf(cards[id]);
@@ -158,26 +167,30 @@ function changeSide(el, front, id) {
     if (front == 'card-7') {
         
         setPointerEvents('body', 'none');
+        
         document.querySelector('.bonus-time').style.display = 'block';
 
         window.setTimeout(function() {
+            
             add30sec();
             
             sound = new Audio("resources/wav/bonus.wav");
             sound.play();
             
             removeClass('card-' + cards[id].id, 'flipInY'); 
-
             addClass('card-' + cards[id].id, 'bounceOut'); 
             
             document.getElementById('card-' + cards[id].id).style.opacity = 0; 
+            
             cards[id].active = '0';
+            
             leftCards= leftCards - 1;
 
             index = activeCards.indexOf(cards[id]);
             activeCards.splice(index, 1);
             
             setPointerEvents('body', 'auto');
+            
             document.querySelector('.bonus-time').style.display = 'none';
             
             checkEnd();
@@ -204,6 +217,7 @@ function checkPairs() {
 
                 document.getElementById('card-' + activeCards[0].id).style.opacity = 0;        
                 document.getElementById('card-' + activeCards[1].id).style.opacity = 0;
+                
                 cards[activeCards[0].id].active = '0';
                 cards[activeCards[1].id].active = '0';
                 
@@ -214,7 +228,6 @@ function checkPairs() {
 
                 clearActiveCards();
                 addPoints();
-
                 checkEnd();
 
                 setPointerEvents('body', 'auto');
@@ -267,17 +280,22 @@ function clearActiveCards() {
 function addPoints() {
     
     points = points + 25;
+    
     document.querySelector('.points').textContent = points;
+    
     addClass('points', 'tada');
     
      window.setTimeout(function() {
+         
         removeClass('points', 'tada');
+         
     }, 500); 
 }
 
 function endGame() {
     
     window.clearInterval(iv);
+    
     document.querySelector('.end-box').style.display = 'inline-block';
 
     removeCards();
@@ -285,9 +303,12 @@ function endGame() {
     if (leftCards === 0) {
 
         timeLeft = document.getElementById('time').textContent;
+        
         var a = timeLeft.split(':'); 
         var seconds = (+a[0]) * 60 + (+a[1]); 
+        
         score = points + seconds;
+        
         endTime = seconds;
 
         countdownPoints();
@@ -295,9 +316,13 @@ function endGame() {
 
         document.querySelector('.try-again').style.display = 'none';
 
-        
         if (score > highscore) {
+            
             highscore = score;
+            
+            sound = new Audio("resources/wav/new-highscore.wav");
+            sound.play();
+            
             document.querySelector('.new-highscore').style.display = 'inline-block';
             document.querySelector('.highscore').textContent = highscore;
         }
@@ -306,12 +331,13 @@ function endGame() {
         
         document.querySelector('.end-text').innerHTML = 'Time\'s up!';
         document.querySelector('.try-again').style.display = 'inline-block';
-
     }
 }
 
 function checkEnd() {
+    
     if (leftCards === 0) {
+        
         endGame();
     }
 }
@@ -322,7 +348,9 @@ function closeEndBox() {
 }
  
 function add30sec() {
+    
     window.clearInterval(iv);
+    
     timeLeft = document.getElementById('time').textContent;
     
     var a = timeLeft.split(':'); 
@@ -351,25 +379,36 @@ var element, endTime, hours, mins, msLeft, time, iv;
 function countdown(elementName, minutes, seconds) {
 
     function twoDigits(n) {
+        
         return (n <= 9 ? "0" + n : n);
     }
 
     function updateTimer() {
+        
         msLeft = endTime - (+new Date);
+        
         if (msLeft < 1000) {
+            
             element.innerHTML = '0:00';
+            
             endGame();
+            
         } else {
+            
             time = new Date(msLeft);
             hours = time.getUTCHours();
             mins = time.getUTCMinutes();
+            
             element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
+            
             iv = window.setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
         }
     }
 
     element = document.getElementById(elementName);
+    
     endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    
     updateTimer();
 }
 
@@ -385,20 +424,31 @@ function removeCards() {
     cards = [];
     activeCards = [];
     randomId = [];
+    
     photoNumber = -1;
     isPlaying = 0;
     
     var el = document.getElementById("cards").innerHTML; 
     var replace = el.replace(el, "");
+    
     document.getElementById("cards").innerHTML = replace;
 }
 
 function countdownPoints() {
+    
     endTime--;
+    
+    if (endTime >= 10) {
 
-    document.getElementById("time").innerHTML = '0:' + endTime; 
-
+        document.getElementById("time").innerHTML = '0:' + endTime; 
+        
+    } else {
+        
+        document.getElementById("time").innerHTML = '0:0' + endTime;
+    }
+    
     if (endTime === 0) {
+        
          return;
     }
     
@@ -406,11 +456,13 @@ function countdownPoints() {
 }
 
 function countupPoints() {
+    
     points++;
 
     document.querySelector('.end-score').innerHTML = points; 
 
     if (points >= score) {
+        
          return;
     }
     
