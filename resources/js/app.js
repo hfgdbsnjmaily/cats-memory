@@ -23,6 +23,7 @@ let photoNumber = -1;
 const maxNumberOfActives = 2;
 
 let points;
+let time;
 let timeLeft;
 
 let score;
@@ -372,7 +373,7 @@ function removeClass (el, className) {
     document.getElementById(el).classList.remove(className);        
 }
 
-let element, endTime, hours, mins, msLeft, time, iv;
+let element, endTime, hours, mins, msLeft, iv;
 
 function countdown(elementName, minutes, seconds) {
 
