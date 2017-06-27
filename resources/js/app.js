@@ -7,31 +7,30 @@ var Card = function(id, front, back, active) {
     this.active = active;
 };
 
-var numbersOfCards = 14; 
-var numbersOfSpecial = 1;
-var numbersOfTotal = numbersOfCards + numbersOfSpecial;
+const numbersOfCards = 14; 
+const numbersOfSpecial = 1;
+const numbersOfTotal = numbersOfCards + numbersOfSpecial;
 
-var leftCards;
+let leftCards;
 
-var cards = [];
-var activeCards = [];
+let cards = [];
+let activeCards = [];
 
-var randomId = [];
+let randomId = [];
 
-var photoNumber = -1;
+let photoNumber = -1;
 
-var maxNumberOfActives = 2;
+const maxNumberOfActives = 2;
 
-var points;
-var time;
-var timeLeft;
+let points;
+let timeLeft;
 
-var score;
-var highscore = 0;
+let score;
+let highscore = 0;
 
-var sound;
+let sound;
 
-var isPlaying = 0;
+let isPlaying = 0;
 
 setPointerEvents('body', 'none');
 setPointerEvents('.new-game', 'auto');
@@ -75,7 +74,7 @@ function newGame() {
 
 function randomCardsId(arr) {
     
-    for (var i = 0; i < numbersOfTotal; i++) {
+    for (let i = 0; i < numbersOfTotal; i++) {
 
         photoNumber++;
         
@@ -94,10 +93,10 @@ function randomCardsId(arr) {
         }        
     }
     
-    for (var j = arr.length; j > 1; j--) {
+    for (let j = arr.length; j > 1; j--) {
         
-        var r = Math.floor(Math.random() * j);
-        var temp = arr[r];
+        let r = Math.floor(Math.random() * j);
+        let temp = arr[r];
         arr[r] = arr[j-1];
         arr[j-1] = temp;
     }
@@ -105,7 +104,7 @@ function randomCardsId(arr) {
 
 function fillCardsArr(arr) {
     
-    for (var i = 0; i < numbersOfTotal; i++) {
+    for (let i = 0; i < numbersOfTotal; i++) {
 
         arr.push((new Card(i,'card-'+randomId[i],'card-back', '0')));
     }
@@ -113,16 +112,15 @@ function fillCardsArr(arr) {
 
 function addCards(cardsArr) {
     
-    var html, newHtml, el;
+    let html, newHtml;
+    const el = '.cards';
     
     console.log(cards);
 
-    for (var i = 0; i < cardsArr.length; i++) {
+    for (let i = 0; i < cardsArr.length; i++) {
         
-        el = '.cards';
-        
-        var front = cardsArr[i].front;
-        var id = cardsArr[i].id;
+        let front = cardsArr[i].front;
+        let id = cardsArr[i].id;
             
         html = '<li><img src="resources/img/card-back.jpeg" class="card animated" id="card-%id%" onclick="changeSide(this, \''+front+'\', \''+id+'\')"></li>';
             
@@ -137,7 +135,7 @@ function changeSide(el, front, id) {
     sound = new Audio("resources/wav/flip.wav");
     sound.play();
     
-    var index;
+    let index;
     
     addClass('card-' + cards[id].id, 'flipInY'); 
 
@@ -304,8 +302,8 @@ function endGame() {
 
         timeLeft = document.getElementById('time').textContent;
         
-        var a = timeLeft.split(':'); 
-        var seconds = (+a[0]) * 60 + (+a[1]); 
+        let a = timeLeft.split(':'); 
+        let seconds = (+a[0]) * 60 + (+a[1]); 
         
         score = points + seconds;
         
@@ -353,8 +351,8 @@ function add30sec() {
     
     timeLeft = document.getElementById('time').textContent;
     
-    var a = timeLeft.split(':'); 
-    var seconds = (+a[0]) * 60 + (+a[1]); 
+    let a = timeLeft.split(':'); 
+    let seconds = (+a[0]) * 60 + (+a[1]); 
 
     countdown("time", 0, seconds + 30);
 }
@@ -374,7 +372,7 @@ function removeClass (el, className) {
     document.getElementById(el).classList.remove(className);        
 }
 
-var element, endTime, hours, mins, msLeft, time, iv;
+let element, endTime, hours, mins, msLeft, time, iv;
 
 function countdown(elementName, minutes, seconds) {
 
@@ -428,8 +426,8 @@ function removeCards() {
     photoNumber = -1;
     isPlaying = 0;
     
-    var el = document.getElementById("cards").innerHTML; 
-    var replace = el.replace(el, "");
+    const el = document.getElementById("cards").innerHTML; 
+    const replace = el.replace(el, "");
     
     document.getElementById("cards").innerHTML = replace;
 }
