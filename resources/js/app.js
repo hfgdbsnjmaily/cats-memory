@@ -38,9 +38,8 @@ setPointerEvents('.new-game', 'auto');
 
 function startGame() {
     
-    if (isPlaying === 1) {
-        removeCards();
-    }
+    isPlaying === 1 ? removeCards() : null;
+
     
     removeClass('start', 'bounce');
     removeClass('start', 'infinite');    
@@ -336,10 +335,7 @@ function endGame() {
 
 function checkEnd() {
     
-    if (leftCards === 0) {
-        
-        endGame();
-    }
+    leftCards === 0 ? endGame() : null;
 }
 
 function closeEndBox() {
@@ -439,14 +435,8 @@ function countdownPoints() {
     
     endTime--;
     
-    if (endTime >= 10) {
+    endTime >= 10 ? document.getElementById("time").innerHTML = '0:' + endTime : document.getElementById("time").innerHTML = '0:0' + endTime;
 
-        document.getElementById("time").innerHTML = '0:' + endTime; 
-        
-    } else {
-        
-        document.getElementById("time").innerHTML = '0:0' + endTime;
-    }
     
     if (endTime === 0) {
         
