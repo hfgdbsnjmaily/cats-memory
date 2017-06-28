@@ -1,6 +1,6 @@
 var document, window, Audio;
 
-let Card = function(id, front, back, active) {
+let Card = function(id, front, back = 'card-back', active = '0') {
     this.id = id;
     this.back = back;
     this.front = front;
@@ -107,7 +107,7 @@ function fillCardsArr(arr) {
     
     for (let i = 0; i < numbersOfTotal; i++) {
 
-        arr.push((new Card(i,'card-'+randomId[i],'card-back', '0')));
+        arr.push((new Card(i,'card-'+randomId[i])));
     }
 }
 
