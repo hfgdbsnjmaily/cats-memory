@@ -1,6 +1,6 @@
 var document, window, Audio;
 
-var Card = function(id, front, back, active) {
+let Card = function(id, front, back, active) {
     this.id = id;
     this.back = back;
     this.front = front;
@@ -23,7 +23,7 @@ let photoNumber = -1;
 const maxNumberOfActives = 2;
 
 let points;
-let time;
+
 let timeLeft;
 
 let score;
@@ -94,6 +94,7 @@ function randomCardsId(arr) {
         }        
     }
     
+
     for (let j = arr.length; j > 1; j--) {
         
         let r = Math.floor(Math.random() * j);
@@ -118,17 +119,17 @@ function addCards(cardsArr) {
     
     console.log(cards);
 
-    for (let i = 0; i < cardsArr.length; i++) {
+    cardsArr.forEach(cur => {
         
-        let front = cardsArr[i].front;
-        let id = cardsArr[i].id;
+        let front = cur.front;
+        let id = cur.id;
             
         html = '<li><img src="resources/img/card-back.jpeg" class="card animated" id="card-%id%" onclick="changeSide(this, \''+front+'\', \''+id+'\')"></li>';
             
         newHtml = html.replace('%id%', id);
 
         document.querySelector(el).insertAdjacentHTML('beforeend', newHtml);
-    }
+    });
 }
 
 function changeSide(el, front, id) {
@@ -374,6 +375,7 @@ function removeClass (el, className) {
 }
 
 let element, endTime, hours, mins, msLeft, iv;
+let time;
 
 function countdown(elementName, minutes, seconds) {
 
