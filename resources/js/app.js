@@ -170,7 +170,7 @@ function changeSide(el, front, id) {
         
         document.querySelector('.bonus-time').style.display = 'block';
 
-        window.setTimeout(function() {
+        window.setTimeout(() => {
             
             add30sec();
             
@@ -205,7 +205,7 @@ function checkPairs() {
         
         setPointerEvents('body', 'none');
         
-        window.setTimeout(function() {
+        window.setTimeout(() => {
             
             removeClass('card-' + cards[activeCards[0].id].id, 'flipInY');             
             removeClass('card-' + cards[activeCards[1].id].id, 'flipInY'); 
@@ -213,7 +213,7 @@ function checkPairs() {
             addClass('card-' + cards[activeCards[0].id].id, 'bounceOut');             
             addClass('card-' + cards[activeCards[1].id].id, 'bounceOut'); 
         
-            window.setTimeout(function() {
+            window.setTimeout(() => {
 
                 document.getElementById('card-' + activeCards[0].id).style.opacity = 0;        
                 document.getElementById('card-' + activeCards[1].id).style.opacity = 0;
@@ -246,7 +246,7 @@ function checkPairs() {
         addClass('card-' + cards[activeCards[0].id].id, 'shake');          
         addClass('card-' + cards[activeCards[1].id].id, 'shake');
                     
-        window.setTimeout(function() {
+        window.setTimeout(() => {
 
             sound = new Audio("resources/wav/no-pair.wav");
             sound.play();
@@ -285,7 +285,7 @@ function addPoints() {
     
     addClass('points', 'tada');
     
-     window.setTimeout(function() {
+     window.setTimeout(() => {
          
         removeClass('points', 'tada');
          
