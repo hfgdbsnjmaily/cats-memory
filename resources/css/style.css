@@ -149,11 +149,13 @@ header {
     font-weight: 600;
     padding-right: 2%;
     cursor: pointer; 
+    position: relative;
 }
 
 .try-again {
     margin-top: -150px;
     margin-left: calc(225px - 93.5px); 
+    position: absolute;
 }
 
 
