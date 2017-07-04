@@ -1,162 +1,141 @@
 * {
-    margin: 0;
-    padding: 0; 
-}
+  margin: 0;
+  padding: 0; }
 
-.clearfix { zoom: 1 }
-
-.clearfix:after {
+.clearfix {
+  zoom: 1; }
+  .clearfix:after {
     content: '.';
     clear: both;
     display: block;
     height: 0;
-    visibility: hidden;
-}
+    visibility: hidden; }
 
 body {
-    background-image: url(img/back.png);
-    background-size: auto;
-    background-position: center;
-    font-family: Lato;
-    font-weight: 300;
-    position: relative;
-    height: 100vh;
-    color: #555;
-    overflow: hidden;
-}
+  background-image: url(img/back.png);
+  background-size: auto;
+  background-position: center;
+  font-family: Lato;
+  font-weight: 300;
+  position: relative;
+  height: 100vh;
+  color: #555;
+  overflow: hidden; }
 
 header {
-    text-align: center;
-    margin: 1% auto;
-    width: 70%;
-    float: right;
-}
+  text-align: center;
+  margin: 1% auto;
+  width: 70%;
+  float: right; }
 
 .control-panel {
-    width: 25%;
-    float: left;
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 100vh;;
-    padding: 4% 2%;
-    text-align: center;
-}
+  width: 25%;
+  float: left;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  padding: 4% 2%;
+  text-align: center; }
 
 .btn {
-    font-size: 200%;
-    font-family: Lato;
-    color: #555;
-    background-color: rgba(252, 252, 252, 0.74);
-    padding: 5px;
-    border-radius: 8px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
+  font-size: 200%;
+  font-family: Lato;
+  color: #555;
+  background-color: rgba(252, 252, 252, 0.74);
+  padding: 5px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer; }
 
 #start {
-    margin-top: -18%;
-    z-index: 2;
-}
+  margin-top: -18%;
+  z-index: 2; }
 
 .score-box,
 .time-box,
-.highscore-box{
-    padding: 9%;
-    font-size: 200%;
-    position: relative;
-}
+.highscore-box {
+  padding: 9%;
+  font-size: 200%;
+  position: relative; }
 
 .points,
 .time,
-.highscore { font-size: 250%; }
+.highscore {
+  font-size: 250%; }
 
 .bonus-time {
-    color: #65bf65;
-    position: absolute;
-    margin-left: 40%;
-    display: none;
-}
+  color: #65bf65;
+  position: absolute;
+  margin-left: 40%;
+  display: none; }
 
 .new-highscore {
-    color: #eab144;
-    font-size: 110%;
-    font-weight: 600;
-    position: absolute;
-    margin-top: -23%;
-    display: none;
-}
+  color: #eab144;
+  font-size: 110%;
+  font-weight: 600;
+  position: absolute;
+  margin-top: -23%;
+  display: none; }
 
-.game { position: relative; }
+.game {
+  position: relative; }
 
-.game-panel{
-    width: 70%;
-    float: right;
-    height: 100vh;
-}
+.game-panel {
+  width: 70%;
+  float: right;
+  height: 100vh; }
 
 #back-img {
-    height: 80%;
-    margin-left: 25%;
-    margin-top: 2%;
-    opacity: 0.1;    
-}
+  height: 80%;
+  margin-left: 25%;
+  margin-top: 2%;
+  opacity: 0.1; }
 
 .cards {
-    list-style: none;
-    width: 100%;
-}
-
-.cards li {
+  list-style: none;
+  width: 100%; }
+  .cards li {
     display: block;
     float: right;
     width: 20%;
     padding-top: 2%;
     padding-bottom: 2%;
-    text-align: center;
-}
-
+    text-align: center; }
 
 .card {
-    width: 120px;
-    height: 160px;
-    border-radius: 10px;
-    box-shadow: 6px 6px 30px 0px rgba(184,184,184,1);
-}
+  width: 120px;
+  height: 160px;
+  border-radius: 10px;
+  box-shadow: 6px 6px 30px 0px #b8b8b8; }
 
 .end-box {
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 250px;
-    width: 450px;
-    position: absolute;
-    top: calc(50% + 125px);
-    left: calc(65% - 225px);
-    border-radius: 10px;
-    box-shadow: 6px 6px 30px 0px rgba(184,184,184,1);
-    display: none;
-}
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 250px;
+  width: 450px;
+  position: absolute;
+  top: calc(50% + 125px);
+  left: calc(65% - 225px);
+  border-radius: 10px;
+  box-shadow: 6px 6px 30px 0px #b8b8b8;
+  display: none; }
 
 .end-text {
-    height: 100%;
-    padding-top: 10%;
-    text-align: center;
-    font-size: 200%;
-}
+  height: 100%;
+  padding-top: 10%;
+  text-align: center;
+  font-size: 200%; }
 
-.end-score { font-size: 250%; }
+.end-score {
+  font-size: 250%; }
 
 .close-end-box {
-    float: right;
-    font-size: 200%;
-    font-weight: 600;
-    padding-right: 2%;
-    cursor: pointer; 
-    position: relative;
-}
+  float: right;
+  font-size: 200%;
+  font-weight: 600;
+  padding-right: 2%;
+  cursor: pointer;
+  position: relative; }
 
 .try-again {
-    margin-top: -150px;
-    margin-left: calc(225px - 93.5px); 
-    position: absolute;
-}
-
-
-
+  margin-top: -150px;
+  margin-left: calc(225px - 93.5px);
+  position: absolute; }
