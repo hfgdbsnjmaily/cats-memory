@@ -18,7 +18,7 @@ $background-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background-image: url(img/back.png);
+    background-image: url(../images/back.png);
     background-size: auto;
     background-position: center;
     font-family: Lato;
@@ -45,7 +45,7 @@ header {
     text-align: center;
 }
 
-.btn {
+%button {
     font-size: 200%;
     font-family: Lato;
     color: #555;
@@ -56,31 +56,32 @@ header {
     cursor: pointer;
 }
 
-#start {
+.control-panel__button-new-game{
+    @extend %button;
     margin-top: -18%;
     z-index: 2;
 }
 
-.score-box,
-.time-box,
-.highscore-box{
-    padding: 9%;
+.control-panel__score-box,
+.control-panel__time-box,
+.control-panel__highscore-box{
+    padding: 8%;
     font-size: 200%;
     position: relative;
 }
 
-.points,
-.time,
-.highscore { font-size: 250%; }
+.control-panel__points,
+.control-panel__time,
+.control-panel__highscore { font-size: 250%; }
 
-.bonus-time {
+.control-panel__bonus-time {
     color: #65bf65;
     position: absolute;
     margin-left: 40%;
     display: none;
 }
 
-.new-highscore {
+.control-panel__new-highscore {
     color: #eab144;
     font-size: 110%;
     font-weight: 600;
@@ -91,37 +92,36 @@ header {
 
 .game { position: relative; }
 
-.game-panel{
+.game-panel {
     width: 70%;
     float: right;
     height: 100vh;
 }
 
-#back-img {
+.game-panel__back-img {
     height: 80%;
     margin-left: 25%;
     margin-top: 2%;
     opacity: 0.1;
 }
 
-.cards {
+.game-panel__cards {
     list-style: none;
     width: 100%;
     li {
         display: block;
         float: right;
         width: 20%;
-        padding-top: 2%;
-        padding-bottom: 2%;
+        padding-top: 1%;
+        padding-bottom: 1%;
         text-align: center;
+        img {
+            width: 120px;
+            height: 160px;
+            border-radius: 10px;
+            box-shadow: $shadow;
+        }
     }
-}
-
-.card {
-    width: 120px;
-    height: 160px;
-    border-radius: 10px;
-    box-shadow: $shadow;
 }
 
 .end-box {
@@ -136,16 +136,16 @@ header {
     display: none;
 }
 
-.end-text {
+.end-box__end-text {
     height: 100%;
     padding-top: 10%;
     text-align: center;
     font-size: 200%;
 }
 
-.end-score { font-size: 250%; }
+.end-box__end-score { font-size: 250%; }
 
-.close-end-box {
+.end-box__close {
     float: right;
     font-size: 200%;
     font-weight: 600;
@@ -154,7 +154,8 @@ header {
     position: relative;
 }
 
-.try-again {
+.end-box__button-try-again {
+    @extend %button;
     margin-top: -150px;
     margin-left: calc(225px - 93.5px);
     position: absolute;
